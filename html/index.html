@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../js/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="../js/script.js"></script>
+        <link href="../css/style.css" rel="stylesheet">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+        
+       
+    </head>
+    <body ng-app="MyApp" ng-controller="MyCTRL">
+        <div class="navbar" >
+            <div class="dropdown">
+                <button class="dropbtn" ng-click="click()"><i class="fa fa-bars"></i></button>&nbsp;&nbsp;
+                <i class='fas fa-bahai' style='font-size:20px;color:white'>&nbsp;&nbsp;&nbsp;FindIt<sub style="font-size: 9px">powered by Encompass</sub></i>
+               
+                <div class="dropdown-content" id="myDropDown">
+                    <a href="#"><i class="fas fa-box"></i>&nbsp;&nbsp;Facilities</a>
+                    <a href="#"><i class="fas fa-video"></i>&nbsp;&nbsp;View Mode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i></a>
+                    <a href="#"><i class="fas fa-store"></i>&nbsp;&nbsp;Visit Our App Store</a>
+                    <a href="#"><i class="far fa-bell"></i>&nbsp;&nbsp;Asset Detection Alerts</a>
+                    <a href="#"><i class="fas fa-box-tissue"></i>&nbsp;&nbsp;Asset Export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-directions"></i></a>
+                    <a href="" ng-click="openForm()"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Support Ticket</a>
+                    <a href="#"><i class="far fa-question-circle"></i>&nbsp;&nbsp;Help Center</a>
+                    <a href="#"><i class="fab fa-creative-commons-by"></i>&nbsp;&nbsp;About</a>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign Out</a>
+                </div>
+            </div>
+
+            
+
+        </div>
+        <div ng-show="flag" class="supportFormSection">
+            <form role="form" class="well">
+                <h1>Create Support Ticket</h1>
+                <label for="issue" style="font-weight: 900">Issue:</label><br><br>
+                    <select style="height: 34px;width: 170px;" ng-model="formData.category" ng-change="resetDescription($event)" required >
+                        <!-- <option>Request Access</option>
+                        <option>OTP Validation</option>
+                        <option>Other - Please Explain</option> -->
+                        <option ng-repeat="issue in categories" value={{issue.label}}>{{issue.label}}</option>
+                        
+                    </select>
+                    <br><br>
+                    <div class="col-xs-12" ng-if="formData.category=='Other - Please Explain'">
+                        <input type="text" id="shortDesc" name="shortDesc" class="form-control"
+                        placeholder="In a few words, describe your issue" required style="width: 250px" ng-model="formData.description" />
+                    </div>
+                    <br>
+                    <label for="description" style="font-weight: 900">Description</label><br><br>
+                    <textarea placeholder="Please record your issue" rows="7" cols="40" required ng-model="formData.longDescription"></textarea>
+                  <br><br>
+                  <div class="button-container">
+                    <button id="save-btn" class="btn btn-success"
+                      ng-disabled="disableSubmitForm()" ng-click="opensomething()" >Submit
+                    </button>&nbsp;&nbsp;
+                    <button id="close-btn" class="btn btn-success">Close</button>
+                  </div>
+            </form>
+
+            <div ng-show="showIt">
+                <h2>A Modal should be displayed here!!</h2>
+            </div>
+            
+            
+
+            
+        </div>
+    
+        
+
+        
+
+    </body>
+</html>
