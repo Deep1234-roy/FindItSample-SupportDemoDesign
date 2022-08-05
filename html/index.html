@@ -11,9 +11,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    
-        
-       
     </head>
     <body ng-app="MyApp" ng-controller="MyCTRL">
         <div class="navbar" >
@@ -42,14 +39,11 @@
                 <h1>Create Support Ticket</h1>
                 <label for="issue" style="font-weight: 900">Issue:</label><br><br>
                     <select style="height: 34px;width: 170px;" ng-model="formData.category" ng-change="resetDescription($event)" required >
-                        <!-- <option>Request Access</option>
-                        <option>OTP Validation</option>
-                        <option>Other - Please Explain</option> -->
                         <option ng-repeat="issue in categories" value={{issue.label}}>{{issue.label}}</option>
                         
                     </select>
-                    <br><br>
-                    <div class="col-xs-12" ng-if="formData.category=='Other - Please Explain'">
+                    <br>
+                    <div class="col-xs-12" ng-if="formData.category=='Other - Please Explain'"><br>
                         <input type="text" id="shortDesc" name="shortDesc" class="form-control"
                         placeholder="In a few words, describe your issue" required style="width: 250px" ng-model="formData.description" />
                     </div>
@@ -59,24 +53,23 @@
                   <br><br>
                   <div class="button-container">
                     <button id="save-btn" class="btn btn-success"
-                      ng-disabled="disableSubmitForm()" ng-click="opensomething()" >Submit
+                      ng-disabled="disableSubmitForm()" >Submit
                     </button>&nbsp;&nbsp;
-                    <button id="close-btn" class="btn btn-success">Close</button>
+                    <button id="close-btn" class="btn btn-success" ng-click="closeForm()">Close</button>
                   </div>
             </form>
 
-            <div ng-show="showIt">
-                <h2>A Modal should be displayed here!!</h2>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                    <p>Thank you for contacting support</p>
+                    <p>Your support ticket # is </p>
+                <button type="button" id="close" class="btn btn-danger" ng-click="closeTab()">OK</button>
             </div>
-            
-            
-
-            
-        </div>
-    
-        
-
-        
-
-    </body>
+  
+  </div>    
+</div>
+</body>
 </html>

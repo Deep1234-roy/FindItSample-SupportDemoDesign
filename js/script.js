@@ -9,6 +9,23 @@ var app = angular
                     document.getElementById("myDropDown").classList.toggle("show");
                 }
 
+                // Get the modal
+                var modal = document.getElementById("myModal");
+                var btn = document.getElementById("save-btn");
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+                // When the user clicks the button, open the modal 
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                $scope.closeTab=function(){
+                    modal.style.display = "none";
+                    $scope.flag=false;
+                }
+  
+
+
                 //Close the dropdown if the user clicks outside of it.
                 window.onclick=function(e){
                     if(!e.target.matches('.dropbtn')){
@@ -22,6 +39,9 @@ var app = angular
                 $scope.openForm=function(){
                     $scope.flag=true;
                 }
+                $scope.closeForm=function(){
+                    $scope.flag=false;
+                }
                 $scope.openBox=false;
                 $scope.IssueBoxOpen=function(){
                     
@@ -32,6 +52,10 @@ var app = angular
                     description: '',
                     longDescription: ''
                 }
+                $scope.resetDescription = function(){
+                    $scope.formData.longDescription='';
+                    $scope.formData.description='';
+                }
                 $scope.categories = [
                     { label: '--Select an issue type--', value: 'default' },
                     { label: 'Data Issue', value: 'dataissue' },
@@ -40,28 +64,16 @@ var app = angular
                     { label: 'Other - Please Explain', value: 'others' },]
 
                 $scope.disableSubmitForm = function(){
-                    if($scope.formData.category == '--Select an issue type--'){
+                    if(!$scope.formData.longDescription){
+                        return true;
+                    }else if($scope.formData.category == '--Select an issue type--'){
                         return true;
                     }else if($scope.formData.category == 'Other - Please Explain'){
                         if(!$scope.formData.description){
                             return true;
                         }
-                    }else if(!$scope.formData.longDescription){
-                        return true;
                     }
                     return false;
                 }
-
-                $scope.showIt=false;
-                $scope.opensomething=function(){
-                    $scope.showIt=true;
-                }
-
-                $scope.closeModal=function(){
-                    $scope.showIt=false;
-                }
-
-                
-
                
             })
