@@ -27,11 +27,46 @@
                     <a href="" ng-click="openForm()"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Support Ticket</a>
                     <a href="#"><i class="far fa-question-circle"></i>&nbsp;&nbsp;Help Center</a>
                     <a href="#"><i class="fab fa-creative-commons-by"></i>&nbsp;&nbsp;About</a>
-                    <a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign Out</a>
+                    <a href="#" ng-click="openRegistrationForm()"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign Out</a>
                 </div>
             </div>
 
             
+
+        </div>
+
+        <div ng-hide="regForm" class="RegistrationSection">
+            <form role="form" class="well">
+                <h1><u>Registration Form</u></h1>
+                <div class="form-style">
+                    <label for="name"><b>First Name : - </b></label>
+                    <input type="text" placeholder="Your First Name" ng-model="newReg.fname" id="fname" class="form-control"/>
+                </div>
+                <br>
+                <div class="form-style">
+                    <label for="name"><b>Last Name : - </b></label>
+                    <input type="text" placeholder="Your Last Name" ng-model="newReg.lname" id="lname" class="form-control"/>
+                </div>
+                <br>
+                <div class="form-style">
+                    <label for="email"><b>Email : - </b></label>
+                    <input type="email" placeholder="Your Email ID" ng-model="newReg.email" id="email" class="form-control"/>
+                </div>
+                <br>
+                <div class="form-style">
+                    <label for="password"><b>Password : - </b></label>
+                    <input type="password" placeholder="Your Password" ng-model="newReg.pwd" id="pwd" class="form-control"/>
+                </div>
+                <br>
+                <div class="form-style">
+                    <label for="phone"><b>Contact number : - </b></label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Contact No" ng-model="newReg.phone" class="form-control">
+                </div>
+                <br><br/>
+                <input type="hidden" ng-model="newReg.id"/>
+                <input type="button" class="btn btn-primary" ng-click="AddUser()" value="Submit">
+            </form>
+
 
         </div>
         <div ng-show="flag" class="supportFormSection">
@@ -53,7 +88,7 @@
                   <br><br>
                   <div class="button-container">
                     <button id="save-btn" class="btn btn-success"
-                      ng-disabled="disableSubmitForm()" >Submit
+                      ng-disabled="disableSubmitForm()" ng-click="openModal()">Submit
                     </button>&nbsp;&nbsp;
                     <button id="close-btn" class="btn btn-success" ng-click="closeForm()">Close</button>
                   </div>
