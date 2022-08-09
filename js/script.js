@@ -22,6 +22,9 @@ var app = angular
                 $scope.closeTab=function(){
                     modal.style.display = "none";
                     $scope.flag=false;
+                    $scope.formData.category = '--Select an issue type--';
+                    $scope.formData.longDescription='';
+                    $scope.formData.description='';
                 }
   
 
@@ -41,6 +44,9 @@ var app = angular
                 }
                 $scope.closeForm=function(){
                     $scope.flag=false;
+                    $scope.formData.category='--Select an issue type--';
+                    $scope.formData.longDescription='';
+                    $scope.formData.description='';
                 }
                 $scope.openBox=false;
                 $scope.IssueBoxOpen=function(){
